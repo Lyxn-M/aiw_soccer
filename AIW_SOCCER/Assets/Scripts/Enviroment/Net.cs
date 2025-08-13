@@ -39,6 +39,13 @@ public class Net : MonoBehaviour
 
     private void GoalScored(NetID netID)
     {
+         if (netID == NetID.AlbertNet && envID != 99)
+        {
+        GoalSaver.KaiGoals++;
+        }
+
+        GoalSaver.SaveScores();
+
         OnGoalScored?.Invoke(this, new OnGoalScoredEventArgs
         {
             TeamScored = netID == NetID.AlbertNet ? Team.Kais : Team.Alberts,
